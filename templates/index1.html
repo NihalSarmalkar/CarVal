@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static\css\style.css">
+    <title>Car Val</title>
+</head>
+
+<body>
+    <div class="main-block">
+
+        <form form action="{{ url_for('predict')}}" method="post">
+            <div class="info">
+                <h1 style="color: #1c87c9;">Evaluation Form</h1>
+                <h3 style="text-align: left; color: white;">Car Name : </h3>
+                <input class="fname" name="name" type="text" required="required">
+                <h3 style="text-align: left; color: white;">Year of Registration : </h3>
+                <input class="fname" name="Year" type="number" required="required">
+                <h3 style="text-align: left; color: white;">Present Ex-Showroom Price (in Lakhs eg: 8) : </h3>
+                <input type="text" name="Present_Price" required="required"><br>
+                <h3 style="text-align: left; color: white;">Kilometers Driven : </h3>
+                <input type="text" name="Kms_Driven" required="required">
+            </div>
+            <div class="info1">
+
+
+                <select name="Fuel_Type_Petrol" required="required">
+                        <option value="number" disabled selected>Fuel Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Diesel">CNG</option>
+                </select>
+                <select>
+                        <option value="number" disabled selected>Car Condition</option>
+                        <option value="10">Like New</option>
+                        <option value="20">Few Scracthes</option>
+                        <option value="20">Scratches and Dents</option>
+
+                        
+                </select>
+
+
+                <select name="Transmission_Mannual" required="required">
+                    <option value="number" disabled selected>Transmission Type</option>
+                    <option value="Mannual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+
+                <select name="Owner" required="required">
+                <option value="number" disabled selected>Owner Type</option>
+                <option value="0">1st Owner</option>
+                <option value="1">2nd Owner</option>
+                <option value="2">3rd Owner</option>
+              </select>
+            </div>
+            <h3>Seller Type</h3>
+            <div class="metod">
+                <div>
+                    <input type="radio" value="Dealer" id="radioOne" name="Seller_Type_Individual" required="required" />
+                    <label for="radioOne" class="radio">Dealer</label>
+                </div>
+                <div>
+                    <input type="radio" value="Individual" id="radioTwo" name="Seller_Type_Individual" required="required" checked />
+                    <label for="radioTwo" class="radio">Individual</label>
+                </div>
+            </div>
+            <a href="#result"><button class="button" type="submit ">Calculate the Selling Price</button></a>
+
+            <br>
+            <hr>
+            <br>
+            <div id="result">
+                <h3 style="color: aliceblue;">{{ prediction_text }}
+                    <h3>
+            </div>
+
+
+        </form>
+
+
+
+    </div>
+</body>
+
+</html>

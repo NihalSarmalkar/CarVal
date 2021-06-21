@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>CarVal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="static\css\style.css">
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: Roboto, Arial, sans-serif;
+    }
+    
+    .w3-bar,
+    h1,
+    button {
+        font-family: "Montserrat", sans-serif
+    }
+    
+    .fa-anchor,
+    .fa-coffee {
+        font-size: 200px
+    }
+</style>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+            <a href="#about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+            <a href="#cont" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contact</a>
+
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+            <a href="#about" class="w3-bar-item w3-button w3-padding-large">About</a>
+            <a href="#cont" class="w3-bar-item w3-button w3-padding-large">Contact</a>
+
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+        <h1 class="w3-margin w3-jumbo" style="font-family: 'Brush Script MT', cursive; font-weight: bold; font-size: 100px;">CarVal
+
+        </h1>
+        <p class="w3-xlarge" style="font-family: Roboto, Arial, sans-serif; margin-top: 10px;">Get true price of your car
+        </p>
+        <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top"><a href="#main-form">Check
+                Valuation</a></button>
+    </header>
+
+    <!-- First Grid -->
+    <div id="about">
+        <div class="w3-row-padding w3-padding-64 w3-container">
+            <div class="w3-content">
+                <div class="w3-twothird">
+                    <h1>About CarVal</h1>
+                    <h5 class="w3-padding-32">CarVal is the platform where people can check the valuation of their car and can find the true price of their car</h5>
+
+                    <p class="w3-padding-32">CarVal platform is based on the Random Forest machine learning alorithm. Where with the help of user's input algorithm predict the selling price of the car with the accuracy of 91% . This platform is build on Frontend -(HTML,CSS,JS)
+                        Backend - (Machine Learning Model,FLASK(Python)) .Data set used for this project was taken from Kaggel.All the source code of the project is being provide on Github.</p>
+                </div>
+
+                <div class="w3-third w3-center">
+                    <i class="fa fa-car w3-padding-64 w3-text-red" style="font-size: 165px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-form">
+        <div class="main-block">
+
+            <form form action="{{ url_for('predict')}}" method="post">
+                <div class="info">
+                    <h1 style="color: #1c87c9;">Evaluation Form</h1>
+                    <h3 style="text-align: left; color: white;">Car Name : </h3>
+                    <input class="fname" name="name" type="text" required="required">
+                    <h3 style="text-align: left; color: white;">Year of Registration : </h3>
+                    <input class="fname" name="Year" type="number" required="required">
+                    <h3 style="text-align: left; color: white;">Present Ex-Showroom Price (in Lakhs eg: 8) : </h3>
+                    <input type="text" name="Present_Price" required="required"><br>
+                    <h3 style="text-align: left; color: white;">Kilometers Driven : </h3>
+                    <input type="text" name="Kms_Driven" required="required">
+                </div>
+                <div class="info1">
+
+
+                    <select name="Fuel_Type_Petrol" required="required">
+                        <option value="number" disabled selected color="white">Fuel Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Diesel">CNG</option>
+                    </select>
+                    <select>
+                        <option value="number" disabled selected>Car Condition</option>
+                        <option value="10">Like New</option>
+                        <option value="20">Few Scracthes</option>
+                        <option value="20">Scratches and Dents</option>
+
+
+                    </select>
+
+
+                    <select name="Transmission_Mannual" required="required">
+                        <option value="number" disabled selected>Transmission Type</option>
+                        <option value="Mannual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+
+                    <select name="Owner" required="required">
+                        <option value="number" disabled selected>Owner Type</option>
+                        <option value="0">1st Owner</option>
+                        <option value="1">2nd Owner</option>
+                        <option value="2">3rd Owner</option>
+                    </select>
+                </div>
+                <h3 style="    margin-left: 390px;">Seller Type</h3>
+                <div class="metod">
+                    <div>
+                        <input type="radio" value="Dealer" id="radioOne" name="Seller_Type_Individual" required="required" />
+                        <label for="radioOne" class="radio">Dealer</label>
+                    </div>
+                    <div>
+                        <input type="radio" value="Individual" id="radioTwo" name="Seller_Type_Individual" required="required" checked />
+                        <label for="radioTwo" class="radio">Individual</label>
+                    </div>
+                </div>
+                <button class="button" type="submit" onclick="myFunction()">Calculate the Selling Price</button>
+
+                <br>
+                <hr>
+                <br> s
+                <div id="result">
+                    <h3 style="color: aliceblue;">{{ prediction_text }}
+                        <h3>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- Second Grid -->
+    <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+        <div class="w3-content">
+            <div class="w3-third w3-center">
+                <i class="fa fa-user w3-padding-64 w3-text-red w3-margin-right" style="font-size: 165px;"></i>
+            </div>
+
+            <div class="w3-twothird">
+                <h1>Nihal Sarmalkar</h1>
+                <h5>2nd Year Computer Science and Business Systems Student</h5>
+                <div class="w3-xlarge w3-padding-32">
+
+                    <i class="fa fa-instagram w3-hover-opacity"></i>
+                    <i class="fa fa-github w3-hover-opacity"></i>
+
+                    <i class="fa fa-linkedin w3-hover-opacity"></i>
+                </div>
+
+                <p class="w3-text-grey">I am 2nd year CSBS student at Bharati Vidyapeeth (Deemed to be University) College of Engineering Pune. Recently working as Machine learning intern at Grroom and Python Mentor at Tekie.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+        <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+
+    </div>
+
+    <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+        <div id="cont">
+            <div class="container">
+                <div class="row">
+                    <h1 style="text-align: center;">Contact us</h1>
+                </div>
+                <div class="row">
+                    <h4 style="text-align:center">We'd love to hear from you!</h4>
+                </div>
+                <div class="row input-container">
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input type="text" required />
+                            <label>Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input">
+                            <input type="text" required />
+                            <label>Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input" style="float:right;">
+                            <input type="text" required />
+                            <label>Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <textarea required></textarea>
+                            <label>Message</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="btn-lrg submit-btn">Send Message</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+        <div class="w3-xlarge w3-padding-32">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div>
+
+    </footer>
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
